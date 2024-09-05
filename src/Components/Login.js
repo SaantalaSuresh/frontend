@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -71,7 +71,7 @@ const Login = () => {
                     <button className="btn btn-primary w-100">Login with Facebook</button>
                 </form>
                 <div className="text-center mt-3">
-                    Don't have an account? <a href="/register">Register</a>
+                    Don't have an account? <Link to="/register"><a >Register</a></Link>
                 </div>
             </div>
             <ToastContainer />

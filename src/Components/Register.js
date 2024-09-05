@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
@@ -80,7 +81,7 @@ const Register = () => {
                     <button className="btn btn-primary w-100">Register with Facebook</button>
                 </form>
                 <div className="text-center mt-3">
-                    Already have an account? <a href="/login">Login</a>
+                    Already have an account? <Link to="/login" ><a>Login</a></Link>
                 </div>
             </div>
             <ToastContainer />
