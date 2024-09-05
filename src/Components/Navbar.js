@@ -33,7 +33,7 @@ function NavBar() {
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link className='text-dark' href='/'>Home</Nav.Link>
                 
-                {token ? <Button variant="outline-primary pl-2 pr-2" href='/login' onClick={removeToken}>Logout</Button> : <Link to="/login"><Button variant="outline-primary pl-2 pr-2">Login</Button></Link>}
+                {token ? <Button variant="outline-primary pl-2 pr-2" onClick={removeToken}><Link to="/login">Logout</Link></Button> : <Link to="/login"><Button variant="outline-primary pl-2 pr-2">Login</Button></Link>}
                
               </Nav>
               
