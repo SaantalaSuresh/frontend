@@ -6,7 +6,8 @@ import AsyncSelect from 'react-select/async';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
-import TradingViewWidget from 'react-tradingview-widget';
+// import TradingViewWidget from 'react-tradingview-widget';
+import { AdvancedChart } from 'react-tradingview-embed';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { Button, Container, Row, Col, Card, Spinner } from 'react-bootstrap';
@@ -145,51 +146,63 @@ function Home() {
                 </Row>
             )}
 
-            {selectedStock && stockData.length > 0 && (
-                <Card className="my-4 p-3 shadow-lg rounded">
-                    <Card.Header className="bg-primary text-white">
-                        <h2>{selectedStock.label}</h2>
-                    </Card.Header>
-                    <Card.Body>
-                        <Row className="mb-3">
-                            <Col xs={12} md={12} className="mb-3 mb-md-0">
-                                <div style={{ width: '80vw', maxWidth: '100%', height: '80vh' }}>
-                                    <TradingViewWidget symbol={selectedStock.value} autosize theme="light" />
-                                </div>
-                            </Col>
-                        </Row>
-                        <div className="mt-4">
-                            <h3>Historical Data</h3>
-                            <div className="table-responsive">
-                                <table className="table table-bordered">
-                                    <thead>
-                                        <tr className="text-center">
-                                            <th style={{ backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>Date</th>
-                                            <th style={{ backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>Open</th>
-                                            <th style={{ backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>Close</th>
-                                            <th style={{ backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>High</th>
-                                            <th style={{ backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>Low</th>
-                                            <th style={{ backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>Volume</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {stockData.map((entry, index) => (
-                                            <tr key={index} className="text-center">
-                                                <td>{entry.date}</td>
-                                                <td>{entry.open}</td>
-                                                <td>{entry.close}</td>
-                                                <td>{entry.high}</td>
-                                                <td>{entry.low}</td>
-                                                <td>{entry.volume}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </Card.Body>
-                </Card>
-            )}
+{selectedStock && stockData.length > 0 && (
+    <Card className="my-4 p-4 shadow-lg rounded border-0">
+        <Card.Header className="bg-primary text-white rounded-top">
+            <h2 className="mb-0 text-center">{selectedStock.label}</h2>
+        </Card.Header>
+        <Card.Body>
+        <Row className="mb-3 justify-content-center">
+  <Col xs={12} md={12} className='h-100' style={{height:"700px"}}>
+    <div style={{ width: '80vw', maxWidth: '100%', height: '100%' }}>
+      <AdvancedChart
+        widgetProps={{
+          symbol: selectedStock.value, // Fallback to AAPL if no stock is selected
+          theme: 'light',
+          
+          height: 700 // Fix height to 400px
+        }}
+        widgetPropsAny={{
+          height: '500px' // Set chart height to 400px
+        }}
+      />
+    </div>
+  </Col>
+</Row>
+
+            <div className="mt-4">
+                <h3 className="text-center">Historical Data</h3>
+                <div className="table-responsive">
+                    <table className="table table-bordered table-hover">
+                        <thead>
+                            <tr className="text-center" style={{ backgroundColor: '#f2f2f2', fontWeight: 'bold' }}>
+                                <th>Date</th>
+                                <th>Open</th>
+                                <th>Close</th>
+                                <th>High</th>
+                                <th>Low</th>
+                                <th>Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {stockData.map((entry, index) => (
+                                <tr key={index} className="text-center">
+                                    <td>{entry.date}</td>
+                                    <td>{entry.open}</td>
+                                    <td>{entry.close}</td>
+                                    <td>{entry.high}</td>
+                                    <td>{entry.low}</td>
+                                    <td>{entry.volume}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </Card.Body>
+    </Card>
+)}
+
 
             <ToastContainer />
         </Container>
