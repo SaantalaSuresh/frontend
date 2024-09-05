@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link} from 'react-router-dom';
+
 
 function NavBar() {
   const token = localStorage.getItem("token");
@@ -32,7 +33,7 @@ function NavBar() {
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link className='text-dark' href='/'>Home</Nav.Link>
                 
-                {token ? <Button variant="outline-primary pl-2 pr-2" href='/login' onClick={removeToken}>Logout</Button> : <Button variant="outline-primary pl-2 pr-2" href='/login'>Login</Button>}
+                {token ? <Button variant="outline-primary pl-2 pr-2" href='/login' onClick={removeToken}>Logout</Button> : <Link to="/login"><Button variant="outline-primary pl-2 pr-2">Login</Button></Link>}
                
               </Nav>
               
