@@ -1,0 +1,51 @@
+.sidebar {
+  background-color: #f8f9fa; 
+  border-right: 1px solid #dee2e6;
+  position: fixed;
+}
+
+.sidebar-heading {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;
+}
+
+.nav-link {
+  color: #495057; 
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #e9ecef;
+}
+
+.active-item {
+  background-color: #a6acb1; 
+  color: white !important; 
+}
+
+button {
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px;
+}
+
+
+.sidebar {
+  position: relative;
+}
+
+.btn-collapse {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.unactive{
+  color: #495057 !important;
+  font-weight: 500;
+
+
+}

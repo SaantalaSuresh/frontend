@@ -108,7 +108,7 @@ function Home() {
     }, []);
 
     return (
-        <Container>
+        <Container style={{maxWidth:"80vw"}}>
          
 
             <Row className="justify-content-center">
@@ -157,13 +157,13 @@ function Home() {
     <div style={{ width: '80vw', maxWidth: '100%', height: '100%' }}>
       <AdvancedChart
         widgetProps={{
-          symbol: selectedStock.value, // Fallback to AAPL if no stock is selected
+          symbol: selectedStock.value, 
           theme: 'light',
           
-          height: 700 // Fix height to 400px
+          height: 700 
         }}
         widgetPropsAny={{
-          height: '500px' // Set chart height to 400px
+          height: '500px' 
         }}
       />
     </div>

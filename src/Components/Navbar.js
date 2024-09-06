@@ -1,48 +1,70 @@
 import React from 'react';
-import { Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import { useNavigate,Link} from 'react-router-dom';
+import { Navbar, Nav, Form, InputGroup, Dropdown, Button } from 'react-bootstrap';
+import { FaSearch, FaBell, FaEnvelope } from 'react-icons/fa';
+import { Link ,useNavigate} from 'react-router-dom';
 
+const TopNavbar = () => {
+  let isAuthenticated = false;
+  const navigate = useNavigate()
 
-function NavBar() {
   const token = localStorage.getItem("token");
-  const navigate = useNavigate();
+  if(token){
+    isAuthenticated=true;
+  }
 
-  const removeToken = ()=>{
+  const deleteToken =()=>{
     localStorage.removeItem("token");
-    window.location.reload();
     navigate("/")
-    
     
   }
 
-  return (
-    <>
-      <Navbar expand="lg" className="bg-body-tertiary mb-3 p-3 ">
-        <Container fluid>
-          <Navbar.Brand >Stocks</Navbar.Brand>
-          <Navbar.Toggle aria-controls="offcanvasNavbar" />
-          <Navbar.Offcanvas
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
-            placement="end"
-          >
-            <Offcanvas.Header closeButton>
-              <Offcanvas.Title id="offcanvasNavbarLabel">Stock-Market-App</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link className='text-dark' href='/'>Home</Nav.Link>
-                
-                {token ? <Button variant="outline-primary pl-2 pr-2" onClick={removeToken}><Link to="/login">Logout</Link></Button> : <Link to="/login"><Button variant="outline-primary pl-2 pr-2">Login</Button></Link>}
-               
-              </Nav>
-              
-            </Offcanvas.Body>
-          </Navbar.Offcanvas>
-        </Container>
-      </Navbar>
-    </>
-  );
-}
 
-export default NavBar;
+  return (
+    <Navbar bg="light" expand="lg">
+      <Form className="d-flex flex-grow-1 mx-1">
+        <InputGroup>
+          <InputGroup.Text><FaSearch /></InputGroup.Text>
+          <Form.Control type="search" placeholder='Search for various stocks' />
+        </InputGroup>
+      </Form>
+      <Nav className="ml-auto d-flex align-items-center">
+        {isAuthenticated ? (
+          <>
+            <Nav.Link><FaEnvelope /></Nav.Link>
+            <Nav.Link><FaBell /></Nav.Link>
+            <Dropdown>
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
+                <img
+                  src="https://img.freepik.com/premium-vector/silver-membership-icon-default-avatar-profile-icon-membership-icon-social-media-user-image-vector-illustration_561158-4215.jpg"
+                  alt="User"
+                  className="rounded-circle"
+                  width="30"
+                  height="30"
+                />
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item >Profile</Dropdown.Item>
+                <Dropdown.Item >Settings</Dropdown.Item>
+                <Dropdown.Item onClick={deleteToken}>Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </>
+        ) : (
+          <>
+             <div className='d-flex '>
+             <Button variant="outline-primary" className="mx-1 custom-btn btn-secondary">
+              <Link to="/login" className="text-decoration-none text-white" >Login</Link>
+            </Button>
+            <Button variant="outline-secondary" className="mx-1 custom-btn btn-primary">
+              <Link to="/register" className="text-decoration-none text-white">Register</Link>
+            </Button>
+             </div>
+            
+          </>
+        )}
+      </Nav>
+    </Navbar>
+  );
+};
+
+export default TopNavbar;

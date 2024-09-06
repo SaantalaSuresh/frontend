@@ -1,0 +1,32 @@
+
+@media (max-width: 768px) {
+    .ml-3 {
+      margin-left: 0;
+      text-align: center;
+    }
+  
+    .custom-btn {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    
+    .custom-btn:last-of-type {
+      margin-bottom: 0;
+    }
+    
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .navbar-toggler {
+      margin-top: 1rem;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .custom-btn {
+      margin-right: 0.5rem;
+    }
+  }
+  

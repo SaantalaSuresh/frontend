@@ -9,11 +9,11 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     
-    // Redirect to home if token exists
+   
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
-            navigate("/");  // Redirect to home if already logged in
+            navigate("/"); 
         }
     }, [navigate]);
 
@@ -22,16 +22,16 @@ const Login = () => {
         try {
             const response = await axios.post('https://backend-2-890h.onrender.com/api/auth/login', { email, password });
             
-            // Store the JWT token in local storage
+           
             localStorage.setItem('token', response.data.token);  
 
-            // Show success message and navigate to home
+            
             toast.success(response.data.message);
             navigate('/');
         } catch (error) {
             console.error("Login error", error);
             
-            // Show error message on invalid credentials
+        
             if (error.response && error.response.data.message) {
                 toast.error(error.response.data.message);
             } else {
