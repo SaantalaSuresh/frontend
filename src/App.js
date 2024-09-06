@@ -42,6 +42,17 @@ import Register from './Components/Register';
 import Dashboard from './Components/Dashboard';
 import Sidebar from './Components/Sidebar';
 
+
+const Wallet=()=>{
+  return(
+    <div>
+    <h1>Wallet</h1>
+
+    
+    </div>
+  )
+}
+
 const App = () => {
   return (
     <div>
@@ -62,8 +73,8 @@ const App = () => {
             <Route path="/dashboard" element={<Dashboard />} />
            
           
-          {/* <Route path="/wallet" element={<Wallet />} />
-          <Route path="/news" element={<News />} />
+          <Route path="/wallet" element={<Wallet />} />
+          {/* <Route path="/news" element={<News />} />
           <Route path="/stock" element={<Stock />} />
           <Route path="/cryptocurrency" element={<Cryptocurrency />} />
           <Route path="/mutual-fund" element={<MutualFund />} />

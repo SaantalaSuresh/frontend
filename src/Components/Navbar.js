@@ -21,7 +21,7 @@ const TopNavbar = () => {
 
   return (
     <Navbar bg="light" expand="lg">
-      <Form className="d-flex flex-grow-1 mx-1">
+      <Form className="d-flex flex-grow-1 mx-3">
         <InputGroup>
           <InputGroup.Text><FaSearch /></InputGroup.Text>
           <Form.Control type="search" placeholder='Search for various stocks' />

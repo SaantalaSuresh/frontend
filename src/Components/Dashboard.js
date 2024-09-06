@@ -72,7 +72,7 @@ const Dashboard = () => {
       
       <div className="flex-grow-1 p-3">
         
-        {/* <div className="bg-white p-3 mb-3 shadow-sm rounded" id="portfolio">
+        <div className="bg-white p-3 mb-3 shadow-sm rounded" id="portfolio">
           <h3>My Portfolio</h3>
           <div className="d-flex flex-column">
             {portfolio.map(stock => (
@@ -83,7 +83,7 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-        </div> */}
+        </div>
 
         
         {stockChartData && (
